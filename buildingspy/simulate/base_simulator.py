@@ -380,7 +380,8 @@ class _BaseSimulator(object):
         if self._packagePath is None:
             osEnv = self.prependToModelicaPath(osEnv, os.path.abspath("."))
         else:
-            osEnv = self.prependToModelicaPath(osEnv, os.path.dirname(self._packagePath))
+            path = os.path.split(os.path.dirname(self._packagePath))[0]
+            osEnv = self.prependToModelicaPath(osEnv, path)
 
         # Run command
         try:
